@@ -1,0 +1,6 @@
+Gerador e Checker - Next Store
+
+[Gerador]: https://namso-gen.com/
+[Checker]: https://www.mrchecker.net/card-checker/ccn2/
+
+OBS: Tenha uma BIN pra gerar, saiba o que está fazendo 👍
