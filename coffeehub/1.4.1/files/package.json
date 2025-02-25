@@ -1,0 +1,32 @@
+{
+  "name": "coffeehub",
+  "version": "1.4.1",
+  "description": "painel completo, gerador, checker, minerador de contas, attacks, e outros.",
+  "main": "coffee-loader/client.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "coffeehub",
+    "url": "coffeehub.br"
+  },
+  "keywords": [
+    "coffeehub",
+    "checker",
+    "miner",
+    "painel",
+    "gerador"
+  ],
+  "author": "Next Store Software",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "form-data": "^4.0.1",
+    "luxon": "^3.5.0",
+    "minecraft-protocol": "^1.53.0",
+    "mineflayer": "^4.25.0",
+    "moment-timezone": "^0.5.46",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {}
+}
