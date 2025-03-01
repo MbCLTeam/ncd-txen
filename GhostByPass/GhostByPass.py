@@ -1,7 +1,7 @@
 import os
 import subprocess
 import ctypes
-import sy
+import sys
 
 def is_admin():
     try:
@@ -16,9 +16,19 @@ def execute_command(command, success_message, error_message):
         print(f"[=]: {success_message}")
     else:
         print(f"[=]: {error_message}")
-      
+
+def request_admin():
+    print("Este programa requer permissões de administrador.")
+    input("Pressione Enter para solicitar permissão...")
+
+    try:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    except:
+        print("Erro ao solicitar permissões. Execute manualmente como administrador.")
+        input("Pressione Enter para sair...")
+        sys.exit(1)
+
 def main():
-  
     logo = "\033[1;36m" + """
    ________               __  ____        ____
   / ____/ /_  ____  _____/ /_/ __ )__  __/ __ \____ ___________
@@ -31,14 +41,8 @@ def main():
     print(logo)
 
     if not is_admin():
-        print("Este programa requer permissões de administrador.")
-        input("Pressione qualquer tecla para solicitar permissão...")
-
-        
-        if not ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1):
-            print("Permissão negada, aperte qualquer tecla para sair...")
-            input()
-            sys.exit(0)
+        request_admin()
+        sys.exit(0)
 
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -57,12 +61,11 @@ def main():
                             "PowerShell liberado com sucesso!", "Falha ao liberar PowerShell.")
             execute_command("reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v Explorer /t REG_SZ /d Explorer.exe /f", 
                             "Menu Run habilitado com sucesso!", "Falha ao habilitar Menu Run.")
-            execute_command("reg add HKCU\\Software\\Classes\\*\\" + 
-                            "shell\\open\\command /ve /t REG_SZ /d \"cmd.exe\" /f", 
+            execute_command("reg add HKCU\\Software\\Classes\\*\\shell\\open\\command /ve /t REG_SZ /d \"cmd.exe\" /f", 
                             "Botão direito habilitado com sucesso!", "Falha ao habilitar botão direito.")
             execute_command("icacls %userprofile% /grant:r Users:(OI)(CI)F", 
                             "Acesso a pastas liberado com sucesso!", "Falha ao liberar acesso a pastas.")
-            execute_command("sc config cmd /start= demand", 
+            execute_command("sc config cmd start= demand", 
                             "Protegendo CMD e PS para bloqueio com sucesso!", "Falha ao proteger CMD e PS.")
             execute_command("taskkill /F /IM taskmgr.exe", 
                             "Acesso ao TaskManager liberado com sucesso!", "Falha ao liberar acesso ao TaskManager.")
@@ -70,11 +73,12 @@ def main():
                             "Protegendo TaskManager com sucesso!", "Falha ao proteger TaskManager.")
             execute_command("reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v EnableLUA /t REG_DWORD /d 1 /f", 
                             "Editor de Registro habilitado com sucesso!", "Falha ao habilitar Editor de Registro.")
+
             print("\033[92mByPass concluído, aperte qualquer tecla....\033[0m")
             input()
 
         elif choice == '2':
-            os.system("shutdown /r /t 0")  # Reiniciar sistema instantaneamente
+            os.system("shutdown /r /t 0")  
 
         elif choice == '0':
             break
