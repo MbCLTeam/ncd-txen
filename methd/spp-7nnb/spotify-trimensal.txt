@@ -1,11 +1,14 @@
-📦 Método Spotify trimensal ilimitado, garanta um ótimo estoque sem muito.
+📦 Método Spotify trimensal ilimitado
+garanta um ótimo estoque sem muito.
 
-Basta seguir os passos, para garantir seus links.
+Basta seguir os passos, para garantir seus links, e nao precisa de vpn ou proxy.
 
 1) Baixe o CoffeeHub 
 https://coffeehub.gruponext.online
 
-2) Após baixar e ativar tudo certinho, basta ir no menu e por para gerar os links.
+2) Configure o painel em seu sistema 
+
+3) Após baixar e instalar tudo certinho, basta ir no menu do gerador, selecionar o spotify e por para gerar os links.
 
 Você poderá gerar mais de 20 em uma só vez, e poderá gerar a cada 5s.
 
